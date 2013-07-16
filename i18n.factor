@@ -4,7 +4,7 @@ IN: i18n
 
 SYMBOL: i18n-table
 
-: init-i18n ( -- ) ! or throw error
+: init-i18n ( -- ) ! throw an error if i18n-table.txt is not found
     script get parent-directory "i18n-table.txt" append-path utf8 file-lines
     [ "\"" split [ [ 32 > ] filter length 0 > ] filter ] map >hashtable
     i18n-table set-global
