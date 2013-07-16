@@ -1,4 +1,4 @@
-! Copyright (C) 2013 Your name.
+! Copyright (C) 2013 Georg Simon.
 ! See http://factorcode.org/license.txt for BSD license.
 USING: assocs command-line hashtables io.encodings.utf8 io.files io.pathnames
     kernel math namespaces sequences splitting ;
