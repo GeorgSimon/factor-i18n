@@ -16,7 +16,8 @@ SYMBOL: i18n-table
     i18n-table-path
 
     [ utf8 file-lines ]
-    [ message>> write " : " write print
+    [ [ message>> ] [ drop ] recover
+      write " : " write print
       "Strings will not be translated" print flush
       { } ]
     recover
