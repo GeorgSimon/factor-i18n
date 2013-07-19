@@ -8,6 +8,10 @@ SYMBOL: i18n-table
 : i18n-table-path ( -- path )
     script get parent-directory "i18n-table.txt" append-path
     ;
+: error>message ( error -- string )
+    ! Factor errors are strings in Windows and tuples in Linux
+    [ message>> ] [ drop ] recover
+    ;
 : lines>string-arrays ( lines -- string-arrays )
     [ "\"" split [ [ 32 > ] filter length 0 > ] filter ] map
     ;
@@ -16,8 +20,7 @@ SYMBOL: i18n-table
     i18n-table-path
 
     [ utf8 file-lines ]
-    [ [ message>> ] [ drop ] recover
-      write " : " write print
+    [ error>message write " : " write print
       "Strings will not be translated" print flush
       { } ]
     recover
